@@ -1,42 +1,46 @@
-import React from 'react';
-import { MapPin, Users, Globe } from 'lucide-react';
-import { Country } from '../types';
+import React from "react";
+import { MapPin, Users, Globe } from "lucide-react";
+import { Country } from "../types";
 
 interface CountryCardProps {
   country: Country;
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
-  const languages = country.languages ? Object.values(country.languages).join(', ') : 'N/A';
+  const languages = country.languages
+    ? Object.values(country.languages).join(", ")
+    : "N/A";
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <img 
-        src={country.flags.svg} 
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
+      <img
+        src={country.flags.svg}
         alt={`Flag of ${country.name.common}`}
         className="w-full h-40 object-cover"
       />
       <div className="p-4">
-        <h2 className="text-xl font-bold text-gray-800 mb-2">{country.name.common}</h2>
-        
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+          {country.name.common}
+        </h2>
+
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <MapPin className="w-4 h-4" />
-            <span>Capital: {country.capital?.[0] || 'N/A'}</span>
+            <span>Capital: {country.capital?.[0] || "N/A"}</span>
           </div>
-          
-          <div className="flex items-center gap-2 text-gray-600">
+
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <Users className="w-4 h-4" />
             <span>Population: {country.population.toLocaleString()}</span>
           </div>
-          
-          <div className="flex items-center gap-2 text-gray-600">
+
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <Globe className="w-4 h-4" />
             <span>Region: {country.region}</span>
           </div>
-          
-          <div className="mt-2 pt-2 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+
+          <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               <strong>Languages:</strong> {languages}
             </p>
           </div>
